@@ -1,5 +1,13 @@
 from setuptools import setup, find_packages
 
+def parse_requirements(filename):
+    """Load requirements from a pip requirements file."""
+    with open(filename, 'r') as f:
+        lines = f.read().splitlines()
+    # Ignore comments and empty lines
+    requirements = [line.strip() for line in lines if line.strip() and not line.startswith('#')]
+    return requirements
+
 setup(
     name="resale_price_prediction",
     version="0.0.1",
